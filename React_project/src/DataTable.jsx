@@ -5,13 +5,13 @@ const DataTable = () => {
         name: '',
         gender: '',
         age: '',
-    }) 
-    const [data ,setData] = useState([])
+    })
+    const [data, setData] = useState([])
     const handleInput = (e) => {
         // sreadoperator separates the form from the data source .
-        setFormData({...formData,[e.target.name]: e.target.value})
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-    const handleAddData = (e) => { 
+    const handleAddData = (e) => {
         if (formData.name && formData.gender && formData.age) {
             const newitem = {
                 id: Date.now(),
@@ -20,10 +20,15 @@ const DataTable = () => {
                 age: formData.age,
             }
             setData([...data, newitem])
-         }
+            setFormData({
+                name: '',
+                gender: '',
+                age: '',
+            }) //making the form data empty
+        }
 
     }
-    // console.log(formData)
+    // console.log(data)
     return (
         <div className="container">
             <div className="add-container">
@@ -74,15 +79,20 @@ const DataTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* <tr>
-                            <td>Jhon</td>
-                            <td>Jhon</td>
-                            <td>Jhon</td>
-                            <td className='actions'>
-                                <button className='edit'>Edit</button>
-                                <button className='delete'>Delete</button>
-                            </td>
-                        </tr> */}
+                        {
+                            data.map((item) => (
+                                <tr key={item.id}>
+                                    <td id={item.id}>{item.name}</td>
+                                    <td id={item.id}>{item.gender}</td>
+                                    <td id={item.id}>{item.age}</td>
+                                    <td className='actions'>
+                                        <button className='edit'>Edit</button>
+                                        <button className='delete'>Delete</button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+
                     </tbody>
                 </table>
                 <div className="pagintion">
