@@ -6,6 +6,7 @@ const DataTable = () => {
         gender: '',
         age: '',
     })
+    const [editId, setEditId] = useState(false)
     const [data, setData] = useState([])
     const handleInput = (e) => {
         // sreadoperator separates the form from the data source .
@@ -27,6 +28,10 @@ const DataTable = () => {
             }) //making the form data empty
         }
 
+    }
+    const handleDelete = (id) => {
+        const updatedList = data.filter((item) => item.id !== id)
+        setData(updatedList)
     }
     // console.log(data)
     return (
@@ -86,8 +91,8 @@ const DataTable = () => {
                                     <td id={item.id}>{item.gender}</td>
                                     <td id={item.id}>{item.age}</td>
                                     <td className='actions'>
-                                        <button className='edit'>Edit</button>
-                                        <button className='delete'>Delete</button>
+                                        <button className='edit' onClick={() => setEditId(item.id)}>Edit</button>
+                                        <button className='delete' onClick={() => handleDelete(item.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))
