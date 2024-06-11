@@ -6,7 +6,9 @@ const Todo = () => {
 
     const inputRef = useRef()
 
-    const [todoList, setTodoList] = useState(localStorage.getItem('todos')? JSON.parse(localStorage.getItem('todos')) : [])
+    const [todoList, setTodoList] = useState(localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [])
+    
+
     const add = () => {
         const inputText = inputRef.current.value.trim();
         console.log(todoList)
@@ -25,6 +27,8 @@ const Todo = () => {
          return prev.filter((todo) => todo.id !== id)
         })
     }
+
+    
     const Toggle = (id) => {
         setTodoList((prev) => {
             return prev.map((todo) => {
