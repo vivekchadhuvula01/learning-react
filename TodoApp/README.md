@@ -98,7 +98,12 @@ const TodoItems = ({ text, id, isCompleted, deleteTodo, Toggle }) => {
 }
 export default TodoItems
 
+import React from 'react'
+import tick from '../assets/check-black.png'
+import not_tick from '../assets/not_check-black.png'
+import delete_icon from '../assets/delete-black.png'
 
+![alt text](image-4.png)
 
 
 the functions are passed to the todoItem component by using props.
