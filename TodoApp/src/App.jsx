@@ -1,9 +1,10 @@
 import React from 'react'
+import Todo from './components/Todo'
 
 const App = () => {
   return (
-    <div>
-      hello world
+    <div className='bg-stone-600 grid py-4 h-screen'>
+    <Todo/>
     </div>
   )
 }
