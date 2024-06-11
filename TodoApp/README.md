@@ -83,8 +83,9 @@ import tick from '../assets/check-black.png'
 import not_tick from '../assets/not_check-black.png'
 import delete_icon from '../assets/delete-black.png'
 
-const TodoItems = ({ text, id, isCompleted, deleteTodo, Toggle }) => {
 
+
+const TodoItems = ({ text, id, isCompleted, deleteTodo, Toggle }) => {
     return (
         <div className='flex items-center my-3 gap-2'>
             <div onClick={() => { Toggle(id) }} className='flex flex-1 items-center cursor-pointer'>
@@ -95,8 +96,9 @@ const TodoItems = ({ text, id, isCompleted, deleteTodo, Toggle }) => {
         </div>
     )
 }
-
 export default TodoItems
+
+
 
 
 the functions are passed to the todoItem component by using props.
