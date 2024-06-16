@@ -1,23 +1,26 @@
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser';
-import mongoose ,{Schema, mongo} from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const app = express();
-const MONGO_URI = 'mongodb://localhost:27017/Portfolio'
+const MONGO_URI = 'mongodb+srv://vivekchadhuvula:Portfolio2023@cluster0.mhmax6u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 const port = 3000;
 
+
+
 // middleware
-app.use(cors());
+const corsOptions = 'http://localhost:5173/'
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // mongoose``
 async function MongoConnection() {
-// MongoConnection().catch(err => console.log(err));
+    // MongoConnection().catch(err => console.log(err));
     try {
         const Db = await mongoose.connect(MONGO_URI);
         console.log('Connection established')
-        
+
     } catch (error) {
         console.log(error)
     }
@@ -35,9 +38,8 @@ const FormSchema = new Schema({
         required: true,
         type: String,
     },
-    
+
 },
-    
 );
 
 const User = mongoose.model('User', FormSchema);
@@ -45,11 +47,11 @@ const User = mongoose.model('User', FormSchema);
 
 
 
-app.listen(port, (req, res) => {
+app.listen(port, () => {
     console.log(`listening to ${port}`)
 })
 
-//router// CRUD -CREATE 
+//router// CRUD - CREATE 
 app.post('/', async (req, res) => {
     let user = new User();
     user.name = req.body.name;
@@ -57,8 +59,8 @@ app.post('/', async (req, res) => {
     const savedDoc = await user.save();
 
 
-    console.log(savedDoc);
-    res.json({savedDoc});
+    // console.log(savedDoc);
+    res.json({ savedDoc });
 })
 
 app.get('/', async (req, res) => {

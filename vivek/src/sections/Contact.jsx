@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 const Contact = () => {
 
-  const [user ,setUser] = useState([])
+  // const [user, setUser] = useState([])
   const {
     register,
     handleSubmit,
@@ -15,32 +15,38 @@ const Contact = () => {
 
   const onSubmit = async (data) => {
     // e.preventDefault();
-    alert(`Thank you`)
-    const result = await fetch('http://localhost:3000/', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    // if (!resultData) {
+    //  alert('Fill the form')
+    // }
+
+    const result = await
+    fetch('http://localhost:3000/', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+ })
     const resultData = await result.text();
     console.log(resultData)
+    // console.log(user.name)
 
   }
 
   const GetUser = async () => {
-    const GetResult = await fetch('http://localhost:3000/', {
+    const GetResult = await 
+      fetch('http://localhost:3000/', {
       method: 'GET',
-    })
+     })
     const resultData = await GetResult.json();
-    console.log(resultData.name)
-    setUser(resultData.name)
+    console.log(resultData)
+    // setUser(resultData)
 
   }
 
   useEffect(() => {
     GetUser()
-    
+
 
   }, [onSubmit])
 
