@@ -14,38 +14,38 @@ const Contact = () => {
   } = useForm()
 
   const onSubmit = async (data) => {
-    // e.preventDefault();
+    e.preventDefault();
     // if (!resultData) {
     //  alert('Fill the form')
     // }
 
-    const result = await
-    fetch('http://localhost:3000/', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
- })
-    const resultData = await result.text();
-    console.log(resultData)
+    //     const result = await
+    //     fetch('http://localhost:3000/', {
+    //     method: 'POST',
+    //     body: JSON.stringify(data),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //  })
+    //     const resultData = await result.text();
+    //     console.log(resultData)
     // console.log(user.name)
 
   }
 
-  const GetUser = async () => {
-    const GetResult = await 
-      fetch('http://localhost:3000/', {
-      method: 'GET',
-     })
-    const resultData = await GetResult.json();
-    console.log(resultData)
-    // setUser(resultData)
+  // const GetUser = async () => {
+  //   const GetResult = await 
+  //     fetch('http://localhost:3000/', {
+  //     method: 'GET',
+  //    })
+  //   const resultData = await GetResult.json();
+  //   console.log(resultData)
+  //   // setUser(resultData)
 
-  }
+  // }
 
   useEffect(() => {
-    GetUser()
+    // GetUser()
 
 
   }, [onSubmit])
